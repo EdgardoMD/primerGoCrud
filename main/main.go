@@ -21,7 +21,7 @@ func dbConn() (db *sql.DB) {
 	return db
 }
 
-var tmpl = template.Must(template.ParseGlob("form/*"))
+var tmpl = template.Must(template.ParseGlob("template/*"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	db := dbConn()
@@ -49,7 +49,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 }
 
-func mostrar(w http.ResponseWriter, r *http.Request) {
+func Mostrar(w http.ResponseWriter, r *http.Request) {
 	db := dbConn()
 	nId := r.URL.Query().Get("id")
 	selDB, error := db.Query("select * from Empleado where id=?", nId)
@@ -94,4 +94,13 @@ func Insertar(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 	http.Redirect(w, r, "/", 301)
+}
+
+func main() {
+	log.Println("Servidor corriendo en puerto: http://localhost:8090")
+	http.HandleFunc("/", Index)
+	http.HandleFunc("/mostrar", Mostrar)
+	http.HandleFunc("/nuevo", Nuevo)
+	http.HandleFunc("/insertar", Insertar)
+	http.ListenAndServe(":8090", nil)
 }
