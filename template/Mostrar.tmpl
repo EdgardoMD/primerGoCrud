@@ -4,6 +4,6 @@
     <h2> Registrar {{ .Id }} </h2>
       <p>Nombre: {{ .Nombre }}</p>
       <p>Apellido: {{ .Apellido }}</p>
-      <p>Ciudad:  {{ .Ciudad}}</p><br /> <a href="/">Editar</a></p>
+      <p>Ciudad:  {{ .Ciudad}}</p><br /> <a href="/editar?id={{ .Id }}">Editar</a></p>
   {{ template "Footer" }}
 {{ end }}

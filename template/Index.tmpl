@@ -22,8 +22,8 @@
         <td> {{ .Apellido }} </td>
         <td>{{ .Ciudad }} </td>
         <td><a href="/mostrar?id={{ .Id }}">Ver</a></td>
-        <td><a href="/#">Editar</a></td>
-        <td><a href="/#">Borrar</a><td>
+        <td><a href="/editar?id={{ .Id }}">Editar</a></td>
+        <td><a href="/eliminar?id={{ .Id }}">Borrar</a><td>
       </tr>
     {{ end }}
        </tbody>

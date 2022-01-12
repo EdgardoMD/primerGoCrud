@@ -1,0 +1,13 @@
+{{ define "Editar" }}
+  {{ template "Header" }}
+    {{ template "Menu" }}
+   <h2>Actualizar datos del empleado</h2>
+    <form method="POST" action="actualizar">
+      <input type="hidden" name="uid" value="{{ .Id }}" />
+      <label> Nombre </label><input type="text" name="nombre" value="{{ .Nombre }}"  /><br />
+      <label> Apellido </label><input type="text" name="apellido" value="{{ .Apellido }}"  /><br />
+      <label> Ciudad </label><input type="text" name="ciudad" value="{{ .Ciudad }}"  /><br />
+      <input type="submit" value="Actualizar" />
+    </form><br />
+  {{ template "Footer" }}
+{{ end }}
